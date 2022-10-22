@@ -2,23 +2,15 @@ package com.nphase.entity;
 
 public enum ProductCategory {
 
-    FOOD(3, 0.1),
-    DRINKS(3, 0.1);
+  FOOD(new Discount(3, 0.1)),
+  DRINKS(new Discount(3, 0.1));
+  private Discount discount;
 
-    private Integer quantityForDiscount;
+  ProductCategory(Discount discount) {
+    this.discount = discount;
+  }
 
-    private Double discount;
-
-    ProductCategory(Integer quantityForDiscount, Double discount) {
-        this.quantityForDiscount = quantityForDiscount;
-        this.discount = discount;
-    }
-
-    public Integer getQuantityForDiscount() {
-        return quantityForDiscount;
-    }
-
-    public Double getDiscount() {
-        return discount;
-    }
+  public Discount getDiscount() {
+    return discount;
+  }
 }
