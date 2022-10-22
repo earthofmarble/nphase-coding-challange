@@ -13,7 +13,7 @@ public class ShoppingCartServiceTest {
   private final ShoppingCartService service = new ShoppingCartService();
 
   @Test
-  public void calculatesPrice() {
+  public void calculateTotalPriceTest() {
     ShoppingCart cart = new ShoppingCart(Arrays.asList(
         new Product("Tea", BigDecimal.valueOf(5.0), 2),
         new Product("Coffee", BigDecimal.valueOf(6.5), 1)
@@ -22,6 +22,18 @@ public class ShoppingCartServiceTest {
     BigDecimal result = service.calculateTotalPrice(cart);
 
     Assertions.assertEquals(result, BigDecimal.valueOf(16.5));
+  }
+
+  @Test
+  public void calculatePriceWithBulkDiscount() {
+    ShoppingCart cart = new ShoppingCart(Arrays.asList(
+        new Product("Tea", BigDecimal.valueOf(5.1), 3),
+        new Product("Coffee", BigDecimal.valueOf(6.5), 1)
+    ));
+
+    BigDecimal result = service.calculatePriceWithBulkDiscount(cart);
+
+    Assertions.assertEquals(result, BigDecimal.valueOf(20.27));
   }
 
 }
