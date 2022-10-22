@@ -59,7 +59,7 @@ public class ShoppingCartService {
       List<Product> categorizedProducts = categoryEntry.getValue();
       Integer productsInCategory =
           categorizedProducts.stream().map(Product::getQuantity).reduce(0, Integer::sum);
-      if (productsInCategory >= 3) {
+      if (productsInCategory >= category.getQuantityForDiscount()) {
         discount = categorizedProducts.stream()
             .map(product -> getProductDiscount(product, category))
             .reduce(discount, BigDecimal::add);
