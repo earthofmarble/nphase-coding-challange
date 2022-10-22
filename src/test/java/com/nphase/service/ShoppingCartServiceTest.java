@@ -49,7 +49,6 @@ public class ShoppingCartServiceTest {
 
     BigDecimal result = service.calculatePriceWithBulkNCategoryDiscounts(cart);
     Assertions.assertEquals(result, BigDecimal.valueOf(1107.0));
-
   }
 
   @Test
@@ -63,7 +62,6 @@ public class ShoppingCartServiceTest {
 
     BigDecimal result = service.calculatePriceWithBulkNCategoryDiscounts(cart);
     Assertions.assertEquals(result, BigDecimal.valueOf(831.0));
-
   }
 
 }
